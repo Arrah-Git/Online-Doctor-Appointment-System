@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - MediBook BD</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <i class="fa-solid fa-notes-medical"></i>
+        MediBook <span>BD</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="doctors.html">Doctors</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="doctor-dashboard.html" class="active">Doctor Panel</a>
+    </nav>
+
+    <a href="appointment.html" class="btn-top">Book Now</a>
+</header>
+
+<div class="appointment-page-header" style="background: #0056b3; padding: 40px 20px; text-align: center; color: white; margin-top: 0;">
+    <div class="appointment-header-content">
+        <span class="appointment-eyebrow" style="font-size: 12px; letter-spacing: 1px; text-transform: uppercase; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 4px;">MEDIBOOK-BD DOCTOR PANEL</span>
+        <h1 style="margin: 15px 0 10px; font-size: 32px;">Manage Appointments</h1>
+        <p style="margin: 0; font-size: 16px; opacity: 0.9;">View and update the status of patient appointments.</p>
+    </div>
+</div>
+
+<div class="appointment-container" style="max-width: 1100px; margin: 40px auto; padding: 0 20px;">
+
+    <div id="loginBox" class="appointment-form-box" style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 400px; margin: 0 auto;">
+        <h2 style="margin-top: 0; color: #333; text-align: center;">Staff Login</h2>
+
+        <div style="position: relative; width: 100%; margin-bottom: 15px;">
+            <input
+                type="password"
+                id="dashboardPasswordInput"
+                placeholder="Enter password"
+                autocomplete="current-password"
+                style="width: 100%; padding: 12px 45px 12px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; box-sizing: border-box;"
+            >
+
+            <button
+                type="button"
+                id="togglePasswordBtn"
+                aria-label="Show password"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: transparent; color: #6c757d; cursor: pointer; font-size: 16px; padding: 5px;"
+            >
+                <i class="fa-solid fa-eye"></i>
+            </button>
+        </div>
+
+        <button
+            type="button"
+            id="dashboardLoginBtn"
+            style="width: 100%; padding: 12px; background: #0056b3; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;"
+        >
+            Login
+        </button>
+
+        <p
+            id="loginError"
+            style="color: #dc3545; text-align: center; margin-top: 10px; display: none;"
+        >
+            Incorrect password.
+        </p>
+    </div>
+
+    <div id="dashboardBox" class="appointment-form-box" style="display: none; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+            <button
+                type="button"
+                id="dashboardLogoutBtn"
+                style="padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 6px; cursor: pointer;"
+            >
+                Logout
+            </button>
+        </div>
+
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
+            <select
+                id="doctorFilter"
+                style="flex: 1; min-width: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 6px;"
+            >
+                <option value="">All Doctors</option>
+            </select>
+
+            <select
+                id="statusFilter"
+                style="flex: 1; min-width: 160px; padding: 10px; border: 1px solid #ddd; border-radius: 6px;"
+            >
+                <option value="">All Statuses</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+
+            <button
+                type="button"
+                id="refreshBtn"
+                style="padding: 10px 20px; background: #0056b3; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;"
+            >
+                Refresh
+            </button>
+        </div>
+
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+                <thead>
+                    <tr style="background: #f8f9fa; color: #333; border-bottom: 2px solid #dee2e6;">
+                        <th style="padding: 12px;">ID</th>
+                        <th style="padding: 12px;">Patient</th>
+                        <th style="padding: 12px;">Phone</th>
+                        <th style="padding: 12px;">Doctor</th>
+                        <th style="padding: 12px;">Date & Time</th>
+                        <th style="padding: 12px;">Status</th>
+                        <th style="padding: 12px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="dashboardAppointmentsList"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer" style="background: #2c3e50; color: white; padding: 40px 20px 20px; margin-top: 60px;">
+    <div class="footer-bottom" style="max-width: 1200px; margin: 0 auto; color: #aaa; font-size: 14px; text-align: center;">
+        <p>&copy; 2026 MediBook BD. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

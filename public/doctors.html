@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediBook BD - Doctors</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <i class="fa-solid fa-notes-medical"></i>
+        MediBook <span>BD</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="doctors.html" class="active">Doctors</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="doctor-dashboard.html">Doctor Panel</a>
+    </nav>
+
+    <a href="appointment.html" class="btn-top">Book Now</a>
+</header>
+
+<section class="page-container">
+
+    <div class="doctor-page-title">
+        <h1>Our Specialist Doctors</h1>
+        <p>Find experienced doctors and book your appointment online.</p>
+    </div>
+
+    <div class="doctor-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by doctor name, specialty or expertise..."
+        >
+    </div>
+
+    <div id="doctorListContainer" class="doctors-list-grid"></div>
+
+</section>
+
+<footer class="site-footer">
+    <div class="footer-grid">
+
+        <div class="footer-col">
+            <h5>MediBook BD</h5>
+            <p>Connecting patients with trusted medical specialists across Bangladesh.</p>
+        </div>
+
+        <div class="footer-col">
+            <h5>Quick Links</h5>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointment.html">Appointment</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h5>Services</h5>
+            <ul>
+                <li><a href="doctors.html">Find Doctors</a></li>
+                <li><a href="appointment.html">Book Appointment</a></li>
+                <li><a href="appointment.html">Online Scheduling</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h5>Contact</h5>
+            <p>Dhaka, Bangladesh</p>
+            <p>+880 1700-000000</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 MediBook BD. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
